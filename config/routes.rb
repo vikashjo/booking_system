@@ -11,7 +11,5 @@ Rails.application.routes.draw do
     resources :bookings
   end
 
-  delete "users/sign_out", to: "devise/sessions#destroy"
-
-  root "home#index"
+  root "rooms#index"
 end

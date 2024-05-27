@@ -1,0 +1,6 @@
+<h2> Details of your room </h2>
+<p> Name: <%= @room.name %> </p>
+<p> Availability: <%= @room.availability %> </p>
+<p> Category: <%= @room.description %> </p>
+<p> Price: <%= @room.price %> </p>
+<p> <%=  link_to 'Book Now', new_room_booking_path(@room), class: 'btn btn-primary' %>

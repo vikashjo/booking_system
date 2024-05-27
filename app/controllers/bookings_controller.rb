@@ -1,18 +1,19 @@
 class BookingsController < ApplicationController
   before_action :set_room
+
   def index
     @bookings = @room.bookings
   end
 
   def new
-    @booking = room.booking.build
+    @booking = @room.bookings.build
   end
 
   def create
     @booking = @room.bookings.build(booking_params)
     @booking.user = current_user
     if @booking.save
-      redirect_to room_bookings_path, notice: "Your room is successfully booked"
+      redirect_to rooms_path, notice: "Your room is successfully booked"
     else
       render new
     end
@@ -25,6 +26,6 @@ class BookingsController < ApplicationController
   end
 
   def set_room
-    @room = Room.find(params[:id])
+    @room = Room.find(params[:room_id])
   end
 end
