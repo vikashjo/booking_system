@@ -15,7 +15,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to rooms_path, notice: "Your room is successfully booked"
     else
-      render new
+      render :new
     end
   end
 
