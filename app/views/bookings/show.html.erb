@@ -1,0 +1,9 @@
+<h1>Booking Details</h1>
+<p><strong>Room Name:</strong> <%= @booking.room.name %></p>
+<p><strong>User:</strong> <%= @booking.user.email %></p>
+<p><strong>Start Date:</strong> <%= @booking.start_date.strftime('%B %d, %Y %H:%M') %></p>
+<p><strong>End Date:</strong> <%= @booking.end_date.strftime('%B %d, %Y %H:%M') %></p>
+<p><strong>Booking Duration:</strong> <%= distance_of_time_in_words(@booking.start_date, @booking.end_date) %></p>
+
+<%= link_to 'Back to Room', room_path(@booking.room), class: 'btn btn-primary' %>
+<%= link_to 'Back to Bookings', room_bookings_path(@booking.room), class: 'btn btn-primary' %>
