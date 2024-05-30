@@ -1,6 +1,27 @@
-<h1> Please Select your desired room </h1>
-<% @rooms.each do |room| %>
-  <li>
-    <%= link_to room.name, room_path(room) %>
-  </li>
-  <% end %>
+<h1>Rooms</h1>
+<%= link_to 'New Room', new_room_path, class: 'btn btn-primary' %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Availability</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @rooms.each do |room| %>
+      <tr>
+        <td><%= room.name %></td>
+        <td><%= room.description %></td>
+        <td><%= number_to_currency(room.price) %></td>
+        <td><%= room.availability %></td>
+        <td>
+          <%= link_to 'Show', room_path(room), class: 'btn btn-info' %>
+          
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

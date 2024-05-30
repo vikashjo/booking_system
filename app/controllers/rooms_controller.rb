@@ -13,9 +13,9 @@ class RoomsController < ApplicationController
   end
 
   def create
-    @room = Room.crate(room_params)
+    @room = Room.create(room_params)
     if @room.save
-      redirect_to @room, notice: "Roomwas successfully created."
+      redirect_to @room, notice: "Room was successfully created."
     else
       render :new
     end
@@ -28,6 +28,6 @@ class RoomsController < ApplicationController
   private
 
   def room_params
-    params.require(:room).permit(:name, :description, :price, :availability)
+    params.require(:room).permit(:name, :description, :price, :availability, :images [])
   end
 end

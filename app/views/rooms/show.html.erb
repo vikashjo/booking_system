@@ -1,6 +1,19 @@
-<h2> Details of your room </h2>
-<p> Name: <%= @room.name %> </p>
-<p> Availability: <%= @room.availability %> </p>
-<p> Category: <%= @room.description %> </p>
-<p> Price: <%= @room.price %> </p>
+<h1> Details of your room </h1>
+<h2><%= @room.name %></h2>
+<p><%= @room.description %></p>
+<p><strong>Price:</strong> <%= number_to_currency(@room.price) %></p>
+<p><strong>Availability:</strong> <%= @room.availability %></p>
+
+<h2>Images</h2>
+<% if @room.images.attached? %>
+  <% @room.images.each do |image| %>
+    <%= image_tag image, class: 'img-thumbnail', size: '300x300' %>
+  <% end %>
+<% else %>
+  <p>No images available</p>
+<% end %>
+
 <p> <%=  link_to 'Book Now', new_room_booking_path(@room), class: 'btn btn-primary' %>
+
+<%= link_to 'Edit', edit_room_path(@room), class: 'btn btn-warning' %>
+<%= link_to 'Back to Rooms', rooms_path, class: 'btn btn-secondary' %>
